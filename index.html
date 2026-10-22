@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixelitor Browser Demo with CheerpJ</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cjrtnc.leaningtech.com/20261016_3707/loader.js"></script>
+<script src="main.js"></script>
+</head>
+<body>
+
+<main class="shell">
+	<header class="top">
+		<a class="logo" href="https://cheerpj.com/" target="_blank">
+			<img src="assets/CheerpJ_Icon.png" alt="Your company name">
+		</a>
+		<div class="title">
+			<h1>Pixelitor Browser Demo <span class="pill" id="cheerpjPillHeader">Java <span id="headerCheerpjVersion"></span> via CheerpJ</span></h1>
+			<p>A full-featured Java image editor, running unchanged inside the browser via CheerpJ.</p>
+		</div>
+		<div class="actions">
+			<button type="button" class="btn" id="btn-fullscreen">Fullscreen</button>
+		</div>
+	</header>
+	<div class="body">
+		<section class="stage" aria-label="Pixelitor application">
+			<!-- The CheerpJ app mounts here -->
+			<div id="app"></div>
+		</section>
+		<aside>
+			<section>
+				<h2>How to use</h2>
+				<ol>
+					<li><span>A sample image is already open. Check the <b>Layers</b> panel on the right of the editor.</span></li>
+					<li><span>Pick the <b>Brush</b> or another tool from the left toolbar and draw on the image.</span></li>
+					<li><span>Open the <b>Filter</b> menu to apply effects, then use <b>Edit → Undo</b> to step back.</span></li>
+				</ol>
+			</section>
+			<p class="tip"><b>Tip:</b> <code>Ctrl</code>+<code>Z</code> undoes the last step. Use the <b>Zoom</b> tool to inspect details.</p>
+			<hr class="divider">
+			<section>
+				<h2>Things to try</h2>
+				<div class="try">
+					<span>Brush</span><span>Layers &amp; masks</span><span>Gradients</span>
+					<span>Blend modes</span><span>Filters</span><span>Smudge</span><span>Text</span>
+				</div>
+			</section>
+			<hr class="divider">
+			<section>
+				<h2>Open your own image</h2>
+				<ol>
+					<li><span>
+						Click the
+						<svg class="icon-arrow" viewBox="0 0 16 16" role="img" aria-label="upload arrow">
+							<path d="M8 1 L15 8.5 H10.5 V15 H5.5 V8.5 H1 Z"/>
+						</svg>
+						arrow icon in the top right corner of the Pixelitor window's title bar, then choose an image from your computer.</span>
+					</li>
+					<li><span>Go to <b>File → Open...</b></span></li>
+					<li><span>Look in the <code>/uploads</code> folder, select your image and click <b>Open</b>.</span></li>
+				</ol>
+			</section>
+			<!-- <p class="tip"><b>Tip:</b> <code>Ctrl</code>+<code>Z</code> undoes the last step. Use the <b>Zoom</b> tool to inspect details.</p> -->
+			<div class="note">
+				This page runs the original Pixelitor JAR <code id="notePixelatorJar"></code> via <a href="https://cheerpj.com" target="_blank" rel="noopener">CheerpJ</a> on a Java <span id="noteCheerpjVersion"></span> runtime.
+			</div>
+		</aside>
+	</div>
+</main>
+</body>
+</html>

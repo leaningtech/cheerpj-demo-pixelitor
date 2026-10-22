@@ -1,0 +1,183 @@
+/* ============================================================
+	Espresso palette: dark roast header, espresso page, cream sidebar
+============================================================ */
+:root {
+	--accent: #ff6a00;
+	--accent-dark: #e85f00;
+	--accent-text: #ffc29a;
+	--accent-soft: rgba(255,106,0,.24);
+	--radius: 16px;
+	--side-w: 275px;		/* sidebar width */
+	--side-font: 12px;		/* sidebar text size */
+	--page: #2a231e;
+	--app-bg: #ffffff;
+	--window-border: #4a3d32;
+
+	/* Header */
+	--head-bg: #1b1511;
+	--head-text: #ffffff;
+	--head-muted: #cdbfae;
+	--head-border: #ff6a00;
+	--pill-bg: var(--accent-soft);
+	--pill-text: var(--accent-text);
+	--btn-bg: var(--accent);
+	--btn-text: #1c1c1c;
+	--btn-hover: var(--accent-dark);
+
+	/* Sidebar */
+	--side-bg: #efe5d6;
+	--side-text: #2a211a;
+	--side-muted: #6d5d4d;
+	--side-line: #cdbfab;
+	--side-inset: #e1d4c0;
+	--side-code: #d4c5ae;
+	--side-code-text: #2a211a;
+	--badge-bg: #ffdcc2;
+	--badge-text: #a24100;
+}
+
+/* Border-box for the page's own elements only.
+   #app and its children keep the browser default (content-box),
+   because CheerpJ's own stylesheet assumes it. */
+*, *::before, *::after { box-sizing: border-box; }
+#app, #app *, #app *::before, #app *::after { box-sizing: content-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+	background: var(--page);
+	color: var(--side-text);
+	font: 13px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	padding: 16px;
+}
+
+/* ---------- Window ---------- */
+.shell {
+	height: calc(100vh - 32px);
+	min-height: 640px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--window-border);
+	border-radius: var(--radius);
+	overflow: hidden;
+	box-shadow: 0 12px 32px rgba(0,0,0,.35);
+}
+
+/* ---------- Header ---------- */
+.top {
+	display: flex; align-items: center; gap: 16px;
+	padding: 14px 18px;
+	background: var(--head-bg);
+	color: var(--head-text);
+	border-bottom: 3px solid var(--head-border);
+}
+.logo {
+	flex: none;
+	display: block;
+	height: 36px;
+}
+.logo img {
+	display: block;
+	height: 100%;
+	width: auto;
+}
+
+.title { flex: 1; min-width: 0; }
+.title h1 {
+	margin: 0; font-size: 15px; font-weight: 700;
+	display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.pill {
+	cursor: pointer;
+	font-size: 11px; font-weight: 600;
+	color: var(--pill-text); background: var(--pill-bg);
+	border-radius: 999px; padding: 1px 9px;
+}
+.title p { margin: 2px 0 0; color: var(--head-muted); }
+
+.actions { display: flex; gap: 8px; flex: none; }
+.btn {
+	all: unset; cursor: pointer;
+	padding: 6px 14px; border-radius: 8px;
+	font-size: 12px; font-weight: 600;
+	background: var(--btn-bg); color: var(--btn-text);
+	transition: background .15s;
+}
+.btn:hover { background: var(--btn-hover); }
+.btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* ---------- Body ---------- */
+.body { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr var(--side-w); }
+
+/* ---------- App area (CheerpJ mounts here) ---------- */
+.stage { position: relative; min-width: 0; min-height: 0; background: var(--app-bg); }
+#app { position: absolute; inset: 0; background: var(--app-bg); overflow: hidden; }
+#app > * { max-width: 100%; }
+
+/* ---------- Sidebar ---------- */
+aside {
+	display: flex; flex-direction: column; gap: 12px;
+	padding: 12px;
+	background: var(--side-bg);
+	color: var(--side-text);
+	overflow-y: auto;
+	font-size: var(--side-font);
+}
+aside h2 { margin: 0 0 9px; font-size: 1.07em; font-weight: 700; }
+
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: s; }
+ol li { counter-increment: s; display: grid; grid-template-columns: 20px 1fr; gap: 9px; }
+ol li::before {
+	content: counter(s);
+	width: 20px; height: 20px; border-radius: 50%;
+	background: var(--badge-bg); color: var(--badge-text);
+	font-size: 10px; font-weight: 700;
+	display: grid; place-items: center;
+}
+
+.divider { border: 0; border-top: 1px solid var(--side-line); margin: 0; }
+.try { display: flex; flex-wrap: wrap; gap: 6px; }
+.try span {
+	border: 1px solid var(--side-line); background: var(--side-inset);
+	border-radius: 6px; padding: 2px 10px; font-size: 0.93em;
+}
+
+.tip { margin: 0; color: var(--side-muted); }
+.tip b { color: var(--side-text); }
+
+.note a { color: var(--badge-text); font-weight: 600; text-decoration: underline; }
+.note a:hover { color: var(--accent-dark); }
+.note {
+	margin-top: auto;
+	border-left: 3px solid var(--accent);
+	background: var(--side-inset);
+	border-radius: 0 8px 8px 0;
+	padding: 9px 11px; color: var(--side-muted);
+}
+code {
+	font: 0.86em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	background: var(--side-code); color: var(--side-code-text);
+	border-radius: 4px; padding: 1px 5px;
+}
+
+/* Inline badge that mimics the upload arrow in the title bar */
+.icon-arrow {
+	display: inline-block;
+	width: 14px; height: 14px;
+	padding: 2px;
+	margin: 0 2px;
+	border-radius: 3px;
+	background: #5b9bd5;
+	fill: #fff;
+	vertical-align: -3px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 900px) {
+	body { padding: 8px; }
+	.shell { height: auto; min-height: 0; }
+	.body { grid-template-columns: 1fr; }
+	.stage { height: 70vh; min-height: 420px; }
+	.title p { display: none; }
+}
