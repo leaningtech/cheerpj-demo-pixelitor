@@ -40,7 +40,7 @@ async function initCheerpj()
 		});
 		await loadJarIntoStrVfs();
 		cheerpjCreateDisplay(-1, -1, document.getElementById('app'));
-		await cheerpjRunJar(STR_JAR_PATH, '/app/assets/fish.png');
+		await cheerpjRunJar(STR_JAR_PATH, '/app/cheerpj-demo-pixelitor/assets/fish.png');
 	  } catch (e) {
 		console.error(e);
 	}
