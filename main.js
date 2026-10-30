@@ -2,6 +2,7 @@ const CJ_VERSION = 25;
 const PIXELITOR_JAR = "Pixelitor-4.3.1.jar";
 const WEB_JAR_URL = new URL(PIXELITOR_JAR, document.baseURI).href;
 const STR_JAR_PATH = "/str/"+PIXELITOR_JAR;
+const IMAGE_PATH = "/app"+window.location.pathname+"/assets/fish.png";
 
 async function loadJarIntoStrVfs() {
 	const resp = await fetch(WEB_JAR_URL);
@@ -40,7 +41,7 @@ async function initCheerpj()
 		});
 		await loadJarIntoStrVfs();
 		cheerpjCreateDisplay(-1, -1, document.getElementById('app'));
-		await cheerpjRunJar(STR_JAR_PATH, '/app/cheerpj-demo-pixelitor/assets/fish.png');
+		await cheerpjRunJar(STR_JAR_PATH, IMAGE_PATH);
 	  } catch (e) {
 		console.error(e);
 	}
